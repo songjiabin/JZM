@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">JZM</string>
+
+
+    <string-array name="main_tab_item">
+        <item>广场</item>
+        <item>截图</item>
+        <item>分类</item>
+        <item>搜索</item>
+    </string-array>
+
+
 </resources>

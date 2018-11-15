@@ -13,13 +13,19 @@ import butterknife.ButterKnife;
  * version: 1.0.0
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<P extends BasePresenter, V extends BaseView> extends AppCompatActivity implements BaseView {
+
+    public P mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayouId());
         ButterKnife.bind(this);
+        mPresenter = createPresenter();
+        if (mPresenter != null) {
+            mPresenter.onViewAttched(this);
+        }
         initData();
     }
 
@@ -28,6 +34,25 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     protected abstract void initData();
+
+
+    public abstract P createPresenter();
+
+    @Override
+    public void showToast(String message) {
+
+    }
+
+
+    @Override
+    public void showLoading(String message) {
+
+    }
+
+    @Override
+    public void dismissLoading() {
+
+    }
 
 
 }

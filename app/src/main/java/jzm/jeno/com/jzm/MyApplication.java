@@ -2,6 +2,8 @@ package jzm.jeno.com.jzm;
 
 import android.app.Application;
 
+import jzm.jeno.com.jzm.utils.ResUtils;
+
 /**
  * author : 宋佳
  * time   : 2018/11/13
@@ -11,16 +13,17 @@ import android.app.Application;
 
 public class MyApplication extends Application {
 
-    private MyApplication context;
+    private static MyApplication context;
 
     @Override
     public void onCreate() {
         super.onCreate();
         context = this;
+        ResUtils.init();
     }
 
 
-    public MyApplication getContext() {
+    public static MyApplication getContext() {
         return context;
     }
 
