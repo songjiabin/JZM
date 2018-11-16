@@ -10,7 +10,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import jzm.jeno.com.jzm.R;
-import jzm.jeno.com.jzm.adapter.HomePageAdapter;
+import jzm.jeno.com.jzm.adapter.MainAdapter;
 import jzm.jeno.com.jzm.base.BaseActivity;
 import jzm.jeno.com.jzm.mvp.main.MainContract;
 import jzm.jeno.com.jzm.mvp.main.MainPresenter;
@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity<MainContract.Presenter, MainContr
     protected TabLayout tablayout_main;
 
 
-    private HomePageAdapter homePageAdapter;
+    private MainAdapter homePageAdapter;
 
     @Override
     protected int getLayouId() {
@@ -41,8 +41,7 @@ public class MainActivity extends BaseActivity<MainContract.Presenter, MainContr
 
     @Override
     protected void initData() {
-
-        homePageAdapter = new HomePageAdapter(getSupportFragmentManager());
+        homePageAdapter = new MainAdapter(getSupportFragmentManager());
         vp_content.setAdapter(homePageAdapter);
         tablayout_main.setupWithViewPager(vp_content);
         mPresenter.initFragment();

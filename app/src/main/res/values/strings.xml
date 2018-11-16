@@ -10,4 +10,12 @@
     </string-array>
 
 
+    <string-array name="homepage_tab">
+        <item>最新上传</item>
+        <item>今日热门</item>
+        <item>今日推荐</item>
+        <item>最受欢迎</item>
+    </string-array>
+
+
 </resources>

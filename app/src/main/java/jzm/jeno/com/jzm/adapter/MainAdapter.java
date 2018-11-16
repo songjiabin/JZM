@@ -6,22 +6,20 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
-import jzm.jeno.com.jzm.fragment.HotPageItemFragment;
-
 /**
  * author : 宋佳
- * time   : 2018/11/16
+ * time   : 2018/11/15
  * desc   :
  * version: 1.0.0
  */
 
-public class HomePageAdapter extends FragmentStatePagerAdapter {
+public class MainAdapter extends FragmentStatePagerAdapter {
 
 
-    private List<HotPageItemFragment> fragmentList;
     private String[] titles;
+    private List<Fragment> fragmentList;
 
-    public HomePageAdapter(FragmentManager fm) {
+    public MainAdapter(FragmentManager fm) {
         super(fm);
     }
 
@@ -35,16 +33,15 @@ public class HomePageAdapter extends FragmentStatePagerAdapter {
         return fragmentList == null ? 0 : fragmentList.size();
     }
 
-
     @Override
     public CharSequence getPageTitle(int position) {
         return titles == null ? "" : titles[position];
     }
 
 
-    public void setData(List<HotPageItemFragment> fragmentList, String[] titles) {
-        this.fragmentList = fragmentList;
+    public void setData(List<Fragment> fragmentList, String[] titles) {
         this.titles = titles;
+        this.fragmentList = fragmentList;
         notifyDataSetChanged();
     }
 

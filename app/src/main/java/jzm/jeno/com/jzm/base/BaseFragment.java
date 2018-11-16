@@ -17,15 +17,20 @@ import butterknife.ButterKnife;
  * version: 1.0.0
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<P extends BasePresenter, V extends BaseView> extends Fragment implements BaseView {
 
     public String TAG = this.getClass().getSimpleName();
 
+    public P mPresenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
+        mPresenter = createPresenter();
+        if (mPresenter != null) {
+            mPresenter.onViewAttched(this);
+        }
         initData(savedInstanceState);
     }
 
@@ -56,6 +61,8 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract int getLayoutId();
 
+    public abstract P createPresenter();
+
     protected abstract void initData(Bundle savedInstanceState);
 
     protected abstract void process(Bundle savedInstanceState);
@@ -64,5 +71,21 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void initView(View view, Bundle savedInstanceState);
 
+
+    @Override
+    public void showToast(String message) {
+
+    }
+
+
+    @Override
+    public void showLoading(String message) {
+
+    }
+
+    @Override
+    public void dismissLoading() {
+
+    }
 
 }
