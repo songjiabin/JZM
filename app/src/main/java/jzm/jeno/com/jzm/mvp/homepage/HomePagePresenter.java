@@ -33,7 +33,7 @@ public class HomePagePresenter extends HomePageContract.Presenter {
             HotPageItemFragment hotPageItemFragment = HotPageItemFragment.newInstance(mTitles[i]);
             mFragmentList.add(hotPageItemFragment);
         }
-        getView().setTab(mFragmentList,mTitles);
+        getView().setTab(mFragmentList, mTitles);
     }
 }
 

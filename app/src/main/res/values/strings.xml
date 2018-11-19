@@ -18,4 +18,8 @@
     </string-array>
 
 
+
+    <string name="load_end">没有更多数据</string>
+    <string name="load_fail">加载数据异常</string>
+
 </resources>

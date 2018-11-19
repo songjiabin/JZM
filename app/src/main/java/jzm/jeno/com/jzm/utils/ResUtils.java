@@ -23,4 +23,10 @@ public class ResUtils {
     public static String[] getStringArray(int array) {
         return context.getResources().getStringArray(array);
     }
+
+
+    public static String getString(int resId) {
+        return context.getResources().getString(resId);
+    }
+
 }
