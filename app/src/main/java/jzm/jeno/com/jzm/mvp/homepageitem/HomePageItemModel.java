@@ -4,6 +4,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import jzm.jeno.com.jzm.R;
 import jzm.jeno.com.jzm.bean.JzmNewBean;
+import jzm.jeno.com.jzm.bean.JzmNewImgBean;
 import jzm.jeno.com.jzm.http.ApiMethods;
 import jzm.jeno.com.jzm.utils.ResUtils;
 
@@ -16,10 +17,24 @@ import jzm.jeno.com.jzm.utils.ResUtils;
 
 public class HomePageItemModel implements HomePageItemContract.Model {
 
+    private final String category;
     private HomePageItemContract.Presenter mPresenter;
 
-    public HomePageItemModel(HomePageItemContract.Presenter mPresenter) {
+    private int current_position = 0;
+
+    public HomePageItemModel(HomePageItemContract.Presenter mPresenter, String category) {
         this.mPresenter = mPresenter;
+        this.category = category;
+        if (category.equals("最新上传")) {
+            current_position = 0;
+        } else if (category.equals("今日热门")) {
+            current_position = 1;
+        } else if (category.equals("今日推荐")) {
+            current_position = 2;
+        } else if (category.equals("最受欢迎")) {
+            current_position = 3;
+        }
+
     }
 
 
@@ -28,21 +43,43 @@ public class HomePageItemModel implements HomePageItemContract.Model {
      */
     @Override
     public void loadData(int page) {
-        ApiMethods.getJzmNewInfo(page, new Observer<JzmNewBean>() {
+        if (category.equals("最新上传")) {
+            ApiMethods.getJzmNewInfo(page, observer);
+        } else if (category.equals("今日热门")) {
+            ApiMethods.getJzmTodayInfo(page, observer);
+        } else if (category.equals("今日推荐")) {
+            ApiMethods.getJzmRecommendInfo(page, observer);
+        } else if (category.equals("最受欢迎")) {
+            ApiMethods.getJzmTotallikeInfo(page, observer);
+        }
+    }
 
-
+    /**
+     * 加载图片
+     */
+    @Override
+    public void loadPictureData() {
+        ApiMethods.getJzmNewImgInfo(new Observer<JzmNewImgBean>() {
             @Override
             public void onSubscribe(Disposable d) {
 
             }
 
             @Override
-            public void onNext(JzmNewBean jzmNewBean) {
+            public void onNext(JzmNewImgBean jzmNewBean) {
                 if (jzmNewBean == null) {
                     mPresenter.fail(ResUtils.getString(R.string.load_fail));
                 }
-                if (jzmNewBean != null) {
-                    mPresenter.loadData(jzmNewBean);
+                if (jzmNewBean != null && jzmNewBean.getJzxNewImageItemBeanList() != null) {
+
+
+                    mPresenter.loadPictureImgInfo(jzmNewBean.getJzxNewImageItemBeanList().get(current_position).getImg());
+                    mPresenter.loadPictureImgTag(jzmNewBean.getJzxNewImageItemBeanList().get(current_position).getContent());
+
+
+                    //将访问得到的数据  保存到数据库中
+
+
                 }
             }
 
@@ -54,7 +91,6 @@ public class HomePageItemModel implements HomePageItemContract.Model {
                     mPresenter.fail(ResUtils.getString(R.string.load_end));
                 } else {
                     mPresenter.fail(e.getMessage());
-                    mPresenter.requestError();
                 }
             }
 
@@ -63,9 +99,41 @@ public class HomePageItemModel implements HomePageItemContract.Model {
 
             }
         });
-
-
-
-
     }
+
+
+    private Observer<JzmNewBean> observer = new Observer<JzmNewBean>() {
+        @Override
+        public void onSubscribe(Disposable d) {
+
+        }
+
+        @Override
+        public void onNext(JzmNewBean jzmNewBean) {
+            if (jzmNewBean == null) {
+                mPresenter.fail(ResUtils.getString(R.string.load_fail));
+            }
+            if (jzmNewBean != null) {
+                mPresenter.loadData(jzmNewBean);
+            }
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            String message = e.getMessage();
+            if (message.contains("404")) {
+                mPresenter.fail(ResUtils.getString(R.string.load_end));
+            } else {
+                mPresenter.fail(e.getMessage());
+                mPresenter.requestError();
+            }
+        }
+
+        @Override
+        public void onComplete() {
+
+        }
+    };
+
+
 }

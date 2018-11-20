@@ -25,16 +25,31 @@ public interface HomePageItemContract {
         void updateData(List<JzmNewBean.JzmNewItemBean> sentences);
 
 
+        void refreshImgInfo(String url);
+
+        void regreshImgTagInfo(String url);
+
+
+
+        void showRequestError();
+
+        void showLoadMoreRequestError();
     }
 
 
     interface Model {
         public void loadData(int page);
 
+
+        public void loadPictureData();
+
+
     }
 
     abstract class Presenter extends BasePresenter<View> {
         public abstract void initData(Bundle bundle);
+
+        public abstract void process(Bundle bundle);
 
         public abstract Context getContext();
 
@@ -49,9 +64,16 @@ public interface HomePageItemContract {
 
 
         /**
-         *Description: 刷新或加载请求
+         * Description: 刷新或加载请求
          */
         public abstract void pullToRefresh(boolean isLoadMore);
+
+
+        public abstract void loadPictureImgInfo(String url);
+
+
+        public abstract void loadPictureImgTag(String text);
+
 
     }
 

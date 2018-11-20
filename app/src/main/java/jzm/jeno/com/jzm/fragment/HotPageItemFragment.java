@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -14,7 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import jzm.jeno.com.jzm.MyApplication;
+import jzm.jeno.com.jzm.ImageUtil.ImageLoader;
+import jzm.jeno.com.jzm.JzmApplication;
 import jzm.jeno.com.jzm.R;
 import jzm.jeno.com.jzm.adapter.HomePageItemAdapter;
 import jzm.jeno.com.jzm.base.BaseFragment;
@@ -45,8 +48,8 @@ public class HotPageItemFragment extends BaseFragment<HomePageItemContract.Prese
 
 
     private HomePageItemAdapter homePageItemAdapter;
-    private View mHeaderTag;
-    private View mHeaderImg;
+    private TextView mHeaderTag;
+    private ImageView mHeaderImg;
 
 
     public static HotPageItemFragment newInstance(String category) {
@@ -70,12 +73,12 @@ public class HotPageItemFragment extends BaseFragment<HomePageItemContract.Prese
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        mPresenter.initData(getArguments());
+        mPresenter.initData(this.getArguments());
     }
 
     @Override
     protected void process(Bundle savedInstanceState) {
-
+        mPresenter.process(getArguments());
     }
 
     @Override
@@ -99,11 +102,11 @@ public class HotPageItemFragment extends BaseFragment<HomePageItemContract.Prese
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         hotpage_refresh.setColorSchemeColors(
-                MyApplication.getContext().getResources().getColor(R.color.red_bg)
+                JzmApplication.getContext().getResources().getColor(R.color.red_bg)
         );
         homePageItemAdapter = new HomePageItemAdapter(new ArrayList<JzmNewBean.JzmNewItemBean>());
         homePageItemAdapter.setHeaderAndEmpty(true);
-        homePageItemAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
+        homePageItemAdapter.openLoadAnimation(null);
         homePageItemAdapter.setEnableLoadMore(false);
         hotpage_lines.setAdapter(homePageItemAdapter);
         hotpage_lines.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -123,8 +126,12 @@ public class HotPageItemFragment extends BaseFragment<HomePageItemContract.Prese
     public void showMessage(String message) {
         if (!isAdded()) {
             //如果没有加载完成的话
-            showToast(message);
+            return;
         }
+
+        showToast(message);
+
+
     }
 
     @Override
@@ -143,5 +150,26 @@ public class HotPageItemFragment extends BaseFragment<HomePageItemContract.Prese
         // 由于添加了headerview,所以从下标1开始刷新
         homePageItemAdapter.notifyItemChanged(1, jzmNewItemBeans.size());
         homePageItemAdapter.loadMoreComplete();
+    }
+
+    @Override
+    public void refreshImgInfo(String url) {
+        ImageLoader.loadGradientByUrl(getActivity(), mHeaderImg, url);
+    }
+
+    @Override
+    public void regreshImgTagInfo(String text) {
+        mHeaderTag.setText(text);
+    }
+
+    @Override
+    public void showRequestError() {
+        hotpage_refresh.setRefreshing(false);
+//        mErrorLayout.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showLoadMoreRequestError() {
+        homePageItemAdapter.loadMoreFail();
     }
 }

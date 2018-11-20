@@ -66,11 +66,11 @@ public abstract class BaseFragment<P extends BasePresenter, V extends BaseView> 
 
     protected abstract void initData(Bundle savedInstanceState);
 
-    protected abstract void process(Bundle savedInstanceState);
+    protected abstract void initView(View view, Bundle savedInstanceState);
 
     protected abstract void initViewListener();
 
-    protected abstract void initView(View view, Bundle savedInstanceState);
+    protected abstract void process(Bundle savedInstanceState);
 
 
     @Override

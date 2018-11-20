@@ -1,10 +1,14 @@
 package jzm.jeno.com.jzm.activity;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.Toolbar;
 
 import java.util.List;
 
@@ -31,6 +35,9 @@ public class MainActivity extends BaseActivity<MainContract.Presenter, MainContr
     @BindView(R.id.tablayout_main)
     protected TabLayout tablayout_main;
 
+    @BindView(R.id.toolbar)
+    protected Toolbar toolbar;
+
 
     private MainAdapter homePageAdapter;
 
@@ -45,6 +52,15 @@ public class MainActivity extends BaseActivity<MainContract.Presenter, MainContr
         vp_content.setAdapter(homePageAdapter);
         tablayout_main.setupWithViewPager(vp_content);
         mPresenter.initFragment();
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    protected void initView() {
+        toolbar.setTitle("句子迷");
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorAccent));
     }
 
     @Override

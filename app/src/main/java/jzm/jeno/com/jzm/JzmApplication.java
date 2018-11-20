@@ -11,9 +11,9 @@ import jzm.jeno.com.jzm.utils.ResUtils;
  * version: 1.0.0
  */
 
-public class MyApplication extends Application {
+public class JzmApplication extends Application {
 
-    private static MyApplication context;
+    private static JzmApplication context;
 
     @Override
     public void onCreate() {
@@ -23,8 +23,15 @@ public class MyApplication extends Application {
     }
 
 
-    public static MyApplication getContext() {
+    public static JzmApplication getContext() {
         return context;
     }
+
+
+
+
+
+
+
 
 }

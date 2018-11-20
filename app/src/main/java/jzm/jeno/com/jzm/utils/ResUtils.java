@@ -2,7 +2,7 @@ package jzm.jeno.com.jzm.utils;
 
 import android.content.Context;
 
-import jzm.jeno.com.jzm.MyApplication;
+import jzm.jeno.com.jzm.JzmApplication;
 
 /**
  * author : 宋佳
@@ -16,7 +16,7 @@ public class ResUtils {
     private static Context context;
 
     public static void init() {
-        context = MyApplication.getContext();
+        context = JzmApplication.getContext();
     }
 
 
