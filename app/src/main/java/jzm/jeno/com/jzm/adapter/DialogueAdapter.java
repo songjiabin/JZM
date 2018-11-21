@@ -19,16 +19,16 @@ import jzm.jeno.com.jzm.bean.JzmDialogueBean;
  * version: 1.0.0
  */
 
-public class DialogueAdapter  extends BaseQuickAdapter<JzmDialogueBean.DialogueItemBean,BaseViewHolder>{
+public class DialogueAdapter extends BaseQuickAdapter<JzmDialogueBean.DialogueItemBean, BaseViewHolder> {
 
 
-    public DialogueAdapter(  @Nullable List<JzmDialogueBean.DialogueItemBean> data) {
+    public DialogueAdapter(@Nullable List<JzmDialogueBean.DialogueItemBean> data) {
         super(R.layout.item_dialogue, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, JzmDialogueBean.DialogueItemBean item) {
         ImageView dialogueImageView = helper.getView(R.id.dialogue_img);
-        ImageLoader.loadImageByUrl(dialogueImageView.getContext(), dialogueImageView, "http:"+item.getImg());
+        ImageLoader.loadImageByUrl(dialogueImageView.getContext(), dialogueImageView, item.getImg());
     }
 }

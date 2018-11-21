@@ -2,6 +2,7 @@ package jzm.jeno.com.jzm.ImageUtil;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -16,13 +17,13 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -169,7 +170,7 @@ public class ImageLoader {
     // 加载网络图片
     public static void loadImageByUrl(Context context, ImageView imageView, String url) {
         // 防止在图片加载完成之前Activity视图已经销毁造成的crash
-        if (context == null || ((Activity) context).isFinishing()) {
+        if (context == null || ((Activity) getActivityFromView(imageView)).isFinishing()) {
             return;
         }
 
@@ -180,6 +181,19 @@ public class ImageLoader {
                 .dontTransform()
                 .into(imageView);
     }
+
+
+    public static Activity getActivityFromView(View view) {
+        Context context = view.getContext();
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity) context;
+            }
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+        return null;
+    }
+
 
     // 加载网络图片成喵喵喵？
     public static void loadRoundByUrl(Context context, ImageView imageView, String url) {

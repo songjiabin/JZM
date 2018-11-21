@@ -31,7 +31,7 @@ public class JzmDialogueBean {
         private String img;
 
         public String getImg() {
-            return img;
+            return "http:"+img;
         }
 
         public void setImg(String img) {

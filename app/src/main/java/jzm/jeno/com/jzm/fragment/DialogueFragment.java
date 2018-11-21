@@ -1,5 +1,6 @@
 package jzm.jeno.com.jzm.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,6 +16,7 @@ import butterknife.BindView;
 import jzm.jeno.com.jzm.ImageUtil.ImageLoader;
 import jzm.jeno.com.jzm.JzmApplication;
 import jzm.jeno.com.jzm.R;
+import jzm.jeno.com.jzm.activity.ShowDialogueActivity;
 import jzm.jeno.com.jzm.adapter.DialogueAdapter;
 import jzm.jeno.com.jzm.base.BaseFragment;
 import jzm.jeno.com.jzm.bean.JzmDialogueBean;
@@ -107,6 +109,17 @@ public class DialogueFragment extends BaseFragment<DialogueContract.Presenter, D
                 ImageLoader.getBitmapByUrl(getContext(), url);
                 showToast("保存图片到相册成功");
                 return true;
+            }
+        });
+
+        dialogueAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                JzmDialogueBean.DialogueItemBean item = (JzmDialogueBean.DialogueItemBean) adapter.getData().get(position);
+                String img = item.getImg();
+                Intent intent = new Intent(getActivity(), ShowDialogueActivity.class);
+                intent.putExtra(Contracts.KEY_PARAMS, img);
+                getActivity().startActivity(intent);
             }
         });
     }

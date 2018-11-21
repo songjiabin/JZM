@@ -1,9 +1,12 @@
 package jzm.jeno.com.jzm.base;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 
 import butterknife.ButterKnife;
 
@@ -18,12 +21,19 @@ public abstract class BaseActivity<P extends BasePresenter, V extends BaseView> 
 
     public P mPresenter;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayouId());
         //隐藏状态栏
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+
+
+
         ButterKnife.bind(this);
         mPresenter = createPresenter();
         if (mPresenter != null) {

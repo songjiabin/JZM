@@ -18,6 +18,15 @@
     </string-array>
 
 
+    <string-array name="menu_tab">
+        <item>书籍</item>
+        <item>电影</item>
+        <item>散文</item>
+        <item>动漫</item>
+        <item>电视剧</item>
+        <item>古诗词</item>
+    </string-array>
+
 
     <string name="load_end">没有更多数据</string>
     <string name="load_fail">加载数据异常</string>

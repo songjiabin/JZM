@@ -76,4 +76,67 @@ public class ApiMethods {
     }
 
 
+    /**
+     * 书籍
+     */
+
+    public static void getJzmMenuBooksInfo(int page, Observer observer) {
+        ApiSubscribe(ApiStrategy.getApiService().getMenuBooksInfo(page), observer);
+    }
+
+
+    /**
+     * 电影
+     *
+     * @param page
+     * @param observer
+     */
+    public static void getJzmMenuMoviesInfo(int page, Observer observer) {
+        ApiSubscribe(ApiStrategy.getApiService().getMenuMoivesInfo(page), observer);
+    }
+
+
+    /**
+     * 散文
+     *
+     * @param page
+     * @param observer
+     */
+    public static void getJzmMenuProsesInfo(int page, Observer observer) {
+        ApiSubscribe(ApiStrategy.getApiService().getMenuProseInfo(page), observer);
+    }
+
+
+    /**
+     * 动漫
+     *
+     * @param page
+     * @param observer
+     */
+    public static void getJzmMenuAnimesInfo(int page, Observer observer) {
+        ApiSubscribe(ApiStrategy.getApiService().getMenuAnimesInfo(page), observer);
+    }
+
+
+    /**
+     * 电视剧
+     *
+     * @param page
+     * @param observer
+     */
+    public static void getJzmMenuTvInfo(int page, Observer observer) {
+        ApiSubscribe(ApiStrategy.getApiService().getMenuTvInfo(page), observer);
+    }
+
+
+    /**
+     * 古诗
+     *
+     * @param page
+     * @param observer
+     */
+    public static void getJzmMenuGuShiInfo(int page, Observer observer) {
+        ApiSubscribe(ApiStrategy.getApiService().getMenuGuShiInfo(page), observer);
+    }
+
 }

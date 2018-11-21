@@ -17,8 +17,8 @@
     </style>
 
     <style name="animation_activity" parent="@android:style/Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
-        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+        <item name="android:activityOpenEnterAnimation">@anim/slide_top_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_top_out</item>
     </style>
 
 </resources>
