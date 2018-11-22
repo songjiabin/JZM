@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ShowDialogueActivity"/>
+        <activity android:name=".activity.MenuDetailActivity"/>
     </application>
 
 </manifest>

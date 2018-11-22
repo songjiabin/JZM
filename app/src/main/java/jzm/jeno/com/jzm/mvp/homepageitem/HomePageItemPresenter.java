@@ -29,12 +29,12 @@ public class HomePageItemPresenter extends HomePageItemContract.Presenter {
 
     @Override
     public void initData(Bundle bundle) {
-        mModel = new HomePageItemModel(this,bundle.getString(Contracts.KEY_PARAMS));
+        mModel = new HomePageItemModel(this,bundle.getString(Contracts.KEY_PARAMS_1));
     }
 
     @Override
     public void process(Bundle bundle) {
-        String title = bundle.getString(Contracts.KEY_PARAMS);
+        String title = bundle.getString(Contracts.KEY_PARAMS_1);
         mModel.loadData(mCurrentPage);
         mModel.loadPictureData();
     }

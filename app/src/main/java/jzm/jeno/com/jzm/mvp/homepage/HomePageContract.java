@@ -17,13 +17,17 @@ public interface HomePageContract {
 
     interface View extends BaseView {
 
-        void setTab(List<HotPageItemFragment> fragmentList, String [] titles);
+        void setTab(List<HotPageItemFragment> fragmentList, String[] titles);
+
+        void setSelectPage(int item);
 
     }
 
 
     abstract class Presenter extends BasePresenter<View> {
         public abstract void initFragment();
+
+        public abstract void process();
     }
 
     interface Model {

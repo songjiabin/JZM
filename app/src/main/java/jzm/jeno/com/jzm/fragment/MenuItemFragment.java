@@ -1,5 +1,6 @@
 package jzm.jeno.com.jzm.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import jzm.jeno.com.jzm.JzmApplication;
 import jzm.jeno.com.jzm.R;
+import jzm.jeno.com.jzm.activity.MenuDetailActivity;
 import jzm.jeno.com.jzm.adapter.MenuItemAdapter;
 import jzm.jeno.com.jzm.base.BaseFragment;
 import jzm.jeno.com.jzm.bean.JzmMenuItemBean;
@@ -43,7 +45,7 @@ public class MenuItemFragment extends BaseFragment<MenuItemContract.Presenter, M
     public static MenuItemFragment newInstance(String category) {
         MenuItemFragment menuItemFragment = new MenuItemFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(Contracts.KEY_PARAMS, category);
+        bundle.putString(Contracts.KEY_PARAMS_1, category);
         menuItemFragment.setArguments(bundle);
         return menuItemFragment;
     }
@@ -86,11 +88,15 @@ public class MenuItemFragment extends BaseFragment<MenuItemContract.Presenter, M
         menuItemAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                //点击 item
+                JzmMenuItemBean item = (JzmMenuItemBean) adapter.getData().get(position);
 
+                Intent intent = new Intent(getActivity(), MenuDetailActivity.class);
+                intent.putExtra(Contracts.KEY_PARAMS_1, item.getLink());
+                intent.putExtra(Contracts.KEY_PARAMS_2,item.getTitle());
+                getActivity().startActivity(intent);
             }
         });
-
-
         refresh_menu.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

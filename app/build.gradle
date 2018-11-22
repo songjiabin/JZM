@@ -67,7 +67,9 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:2.1.4'
 
 
-
+    // 搜索页视图控件
+    compile 'me.gujun.android.taggroup:library:1.4@aar'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
 
 
 }

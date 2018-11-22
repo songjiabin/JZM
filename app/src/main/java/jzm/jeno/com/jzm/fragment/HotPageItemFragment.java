@@ -55,7 +55,7 @@ public class HotPageItemFragment extends BaseFragment<HomePageItemContract.Prese
     public static HotPageItemFragment newInstance(String category) {
         HotPageItemFragment hotPageItemFragment = new HotPageItemFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(Contracts.KEY_PARAMS, category);
+        bundle.putString(Contracts.KEY_PARAMS_1, category);
         hotPageItemFragment.setArguments(bundle);
         return hotPageItemFragment;
     }

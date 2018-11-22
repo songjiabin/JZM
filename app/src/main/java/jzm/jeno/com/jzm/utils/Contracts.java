@@ -23,13 +23,20 @@ public class Contracts {
     public static String SAVE_CARD_PATH = "/sdcard/Lines/";
     public static String SAVE_DIALOGUE_PATH = "/sdcard/LinesDialogue/";
 
-    public static final String KEY_PARAMS = "key_params";
+    public static final String KEY_PARAMS_1 = "key_params_1";
+    public static final String KEY_PARAMS_2 = "key_params_2";
 
 
     public static final String BASE_URL = "http://www.juzimi.com";
 
 
     public static final String BASE_IMG_URL = "http://www.wufazhuce.com";
+
+
+    // sp存储相关
+    public static String SEARCH_TAG = "search_tag";
+
+    public static String SPLIT = "•";
 
 
     public interface Apis {
@@ -103,7 +110,6 @@ public class Contracts {
         @GET("/allarticle/guwen")
         @Html
         Observable<JzmMenuBooksBean> getMenuGuShiInfo(@Query("page") int page);
-
 
 
     }

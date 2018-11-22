@@ -22,4 +22,9 @@
     <color name="share_crad_white">#666666</color>
     <color name="black_translate">#80000000</color>
     <color name="orange_dark">#FCCA58</color>
+
+
+
+    <color name="hotpage_sentences_night_bg">#212121</color>
+    <color name="hotpage_content_bg">#1a1a1a</color>
 </resources>

@@ -13,6 +13,15 @@ public class JzmMenuItemBean {
     private String content;
     private String author;
     private String title;
+    private String link;
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public String getTitle() {
         return title;

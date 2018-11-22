@@ -2,6 +2,7 @@ package jzm.jeno.com.jzm.bean;
 
 import java.util.List;
 
+import jzm.jeno.com.jzm.utils.Contracts;
 import me.ghui.fruit.Attrs;
 import me.ghui.fruit.annotations.Pick;
 
@@ -52,14 +53,23 @@ public class JzmMenuBooksBean {
     }
 
 
-
-    public static class JzmNenuItemContentBooks{
+    public static class JzmNenuItemContentBooks {
         @Pick("span.xqallarticletilelinkspan > a")
         private String title;
         @Pick("div.views-field-phpcode > a")
         private String author;
         @Pick("div.xqagepawirdesc")
         private String content;
+        @Pick(value = "a.xqallarticletilelink", attr = Attrs.HREF)
+        private String link;
+
+        public String getLink() {
+            return Contracts.BASE_URL + link;
+        }
+
+        public void setLink(String link) {
+            this.link = link;
+        }
 
         public String getTitle() {
             return title;
@@ -85,7 +95,6 @@ public class JzmMenuBooksBean {
             this.content = content;
         }
     }
-
 
 
 }

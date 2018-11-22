@@ -33,7 +33,7 @@ public class ShowDialogueActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        ImageLoader.loadImageByUrl(this, show_dialogue_photoview, getIntent().getStringExtra(Contracts.KEY_PARAMS));
+        ImageLoader.loadImageByUrl(this, show_dialogue_photoview, getIntent().getStringExtra(Contracts.KEY_PARAMS_1));
     }
 
     @Override

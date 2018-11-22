@@ -16,7 +16,6 @@
         app:tabMode="fixed"
         app:tabIndicatorColor="@color/yellow_dark"
         app:tabSelectedTextColor="@color/yellow_dark"
-
     >
     </android.support.design.widget.TabLayout>
 

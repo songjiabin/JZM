@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fg_search_background_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:paddingTop="?attr/actionBarSize">
+
+    <RelativeLayout
+        android:id="@+id/fg_search_edt_bg"
+        android:layout_width="340dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_40"
+        android:background="@drawable/background_edt">
+
+    </RelativeLayout>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/fg_search_edt"
+        android:layout_width="320dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:gravity="center"
+        android:hint="搜索记录"
+        android:imeOptions="actionSearch"
+        android:maxLength="24"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:singleLine="true"
+        android:textSize="14sp"
+        app:met_baseColor="@color/gray"
+        app:met_hideUnderline="true"
+        app:met_primaryColor="@color/yellow_dark"/>
+
+    <View
+        android:id="@+id/fg_search_line0"
+        android:layout_width="3dp"
+        android:layout_height="18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/fg_search_edt"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_40"
+        android:background="@color/gray_light"/>
+
+    <TextView
+        android:id="@+id/search_recommend_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fg_search_edt"
+        android:layout_marginTop="40dp"
+        android:layout_toEndOf="@id/fg_search_line0"
+        android:paddingLeft="@dimen/dp_10"
+        android:text="搜索实例"/>
+
+    <me.gujun.android.taggroup.TagGroup
+        android:id="@+id/search_recommend_tags"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/fg_search_line0"
+        android:layout_marginTop="@dimen/dp_40"
+        android:paddingLeft="@dimen/dp_40"
+        android:paddingRight="20dp"
+        app:atg_borderColor="@color/hotpage_sentences_night_bg"
+        app:atg_textColor="@color/hotpage_sentences_night_bg">
+
+    </me.gujun.android.taggroup.TagGroup>
+
+
+    <View
+        android:id="@+id/fg_search_line1"
+        android:layout_width="3dp"
+        android:layout_height="18dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/search_recommend_tags"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginTop="20dp"
+        android:background="@color/gray_light"/>
+
+    <TextView
+        android:id="@+id/search_history_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_recommend_tags"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/fg_search_line1"
+        android:paddingLeft="@dimen/dp_10"
+        android:text="搜索记录"/>
+
+    <TextView
+        android:id="@+id/fg_search_clean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/search_recommend_tags"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingRight="@dimen/dp_40"
+        android:text="清除记录"
+        android:textColor="@color/colorAccentDark"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/fg_search_line1"
+        android:layout_marginTop="@dimen/dp_40"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_40"
+        android:paddingRight="20dp"
+        android:scrollbars="none">
+
+        <me.gujun.android.taggroup.TagGroup
+            android:id="@+id/search_his_tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:atg_borderColor="@color/hotpage_sentences_night_bg"
+            app:atg_textColor="@color/hotpage_sentences_night_bg">
+
+        </me.gujun.android.taggroup.TagGroup>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -35,7 +35,7 @@ public class HomePageFragment extends BaseFragment<HomePageContract.Presenter, H
     public static HomePageFragment newInstance(String category) {
         HomePageFragment homePageFragment = new HomePageFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(Contracts.KEY_PARAMS, category);
+        bundle.putString(Contracts.KEY_PARAMS_1, category);
         return homePageFragment;
     }
 
@@ -46,11 +46,12 @@ public class HomePageFragment extends BaseFragment<HomePageContract.Presenter, H
 
     @Override
     protected void initData(Bundle savedInstanceState) {
+        mPresenter.initFragment();
     }
 
     @Override
     protected void process(Bundle savedInstanceState) {
-
+        mPresenter.process();
     }
 
     @Override
@@ -60,10 +61,10 @@ public class HomePageFragment extends BaseFragment<HomePageContract.Presenter, H
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        homePageAdapter = new HomePageAdapter(getActivity().getSupportFragmentManager());
+        homePageAdapter = new HomePageAdapter(getChildFragmentManager());
         vp_home_page.setAdapter(homePageAdapter);
         fg_home_page_tabLayout.setupWithViewPager(vp_home_page);
-        mPresenter.initFragment();
+
     }
 
     @Override
@@ -73,7 +74,12 @@ public class HomePageFragment extends BaseFragment<HomePageContract.Presenter, H
 
     @Override
     public void setTab(List<HotPageItemFragment> fragmentList, String[] titles) {
-        homePageAdapter.setData(fragmentList,titles);
+        homePageAdapter.setData(fragmentList, titles);
         vp_home_page.setCurrentItem(0);
+    }
+
+    @Override
+    public void setSelectPage(int item) {
+        vp_home_page.setCurrentItem(item);
     }
 }

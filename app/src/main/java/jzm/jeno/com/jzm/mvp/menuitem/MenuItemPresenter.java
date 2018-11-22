@@ -25,7 +25,7 @@ public class MenuItemPresenter extends MenuItemContract.Presenter {
 
     @Override
     public void initData(Bundle bundle) {
-        mTitle = bundle.getString(Contracts.KEY_PARAMS);
+        mTitle = bundle.getString(Contracts.KEY_PARAMS_1);
         mMenuItemModel = new MenuItemModel(this, mTitle);
     }
 
@@ -58,6 +58,7 @@ public class MenuItemPresenter extends MenuItemContract.Presenter {
             jzmMenuItemBean.setAuthor(contentList.get(i).getAuthor());
             jzmMenuItemBean.setContent(contentList.get(i).getContent());
             jzmMenuItemBean.setTitle(contentList.get(i).getTitle());
+            jzmMenuItemBean.setLink(contentList.get(i).getLink());
             jzmMenuItemBeanList.add(jzmMenuItemBean);
         }
 

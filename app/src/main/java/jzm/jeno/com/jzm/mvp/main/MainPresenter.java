@@ -9,6 +9,7 @@ import jzm.jeno.com.jzm.R;
 import jzm.jeno.com.jzm.fragment.DialogueFragment;
 import jzm.jeno.com.jzm.fragment.HomePageFragment;
 import jzm.jeno.com.jzm.fragment.MenuFragment;
+import jzm.jeno.com.jzm.fragment.SearchFragment;
 import jzm.jeno.com.jzm.utils.ResUtils;
 
 /**
@@ -46,8 +47,9 @@ public class MainPresenter extends MainContract.Presenter {
                     mFragmentList.add(MenuFragment.newInstance(mTitles[i]));
                     break;
                 case 3:
-                    mFragmentList.add(HomePageFragment.newInstance(mTitles[i]));
+                    mFragmentList.add(SearchFragment.newInstance(mTitles[i]));
                     break;
+
                 default:
                     break;
             }

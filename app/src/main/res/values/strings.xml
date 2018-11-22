@@ -28,6 +28,16 @@
     </string-array>
 
 
+    <string-array name="recommend_tag_item">
+        <item>三体</item>
+        <item>爆裂鼓手</item>
+        <item>模仿游戏</item>
+        <item>海贼王</item>
+        <item>海上钢琴师</item>
+        <item>两小无猜</item>
+    </string-array>
+
+
     <string name="load_end">没有更多数据</string>
     <string name="load_fail">加载数据异常</string>
 

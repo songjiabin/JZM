@@ -38,7 +38,7 @@ public class MenuFragment extends BaseFragment<MenuContract.Presenter, MenuContr
     public static MenuFragment newInstance(String category) {
         MenuFragment menuFragment = new MenuFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(Contracts.KEY_PARAMS, category);
+        bundle.putString(Contracts.KEY_PARAMS_1, category);
         menuFragment.setArguments(bundle);
         return menuFragment;
     }
@@ -60,7 +60,7 @@ public class MenuFragment extends BaseFragment<MenuContract.Presenter, MenuContr
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        menuAdapter = new MenuAdapter(getActivity().getSupportFragmentManager());
+        menuAdapter = new MenuAdapter(getChildFragmentManager());
         vp_menu_content.setAdapter(menuAdapter);
         tablayout_mune.setupWithViewPager(vp_menu_content);
         mPresenter.initData();

@@ -47,7 +47,7 @@ public class DialogueFragment extends BaseFragment<DialogueContract.Presenter, D
     public static DialogueFragment newInstance(String category) {
         DialogueFragment dialogueFragment = new DialogueFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(Contracts.KEY_PARAMS, category);
+        bundle.putString(Contracts.KEY_PARAMS_1, category);
         dialogueFragment.setArguments(bundle);
         return dialogueFragment;
     }
@@ -118,7 +118,7 @@ public class DialogueFragment extends BaseFragment<DialogueContract.Presenter, D
                 JzmDialogueBean.DialogueItemBean item = (JzmDialogueBean.DialogueItemBean) adapter.getData().get(position);
                 String img = item.getImg();
                 Intent intent = new Intent(getActivity(), ShowDialogueActivity.class);
-                intent.putExtra(Contracts.KEY_PARAMS, img);
+                intent.putExtra(Contracts.KEY_PARAMS_1, img);
                 getActivity().startActivity(intent);
             }
         });
