@@ -54,4 +54,9 @@ public class JzmMenuItemBean {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+
+
+
+
 }

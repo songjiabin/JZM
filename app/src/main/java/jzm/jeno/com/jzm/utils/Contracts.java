@@ -3,10 +3,12 @@ package jzm.jeno.com.jzm.utils;
 import io.reactivex.Observable;
 import jzm.jeno.com.jzm.bean.JzmDialogueBean;
 import jzm.jeno.com.jzm.bean.JzmMenuBooksBean;
+import jzm.jeno.com.jzm.bean.JzmMenuDetailBean;
 import jzm.jeno.com.jzm.bean.JzmNewBean;
 import jzm.jeno.com.jzm.bean.JzmNewImgBean;
 import me.ghui.retrofit.converter.annotations.Html;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -26,11 +28,21 @@ public class Contracts {
     public static final String KEY_PARAMS_1 = "key_params_1";
     public static final String KEY_PARAMS_2 = "key_params_2";
 
+    public static final String ARTICLE_PAGE_URL = "article_page_url";
+    public static final String ARTICLE_PAGE_INTRO = "article_page_intro";
+    public static final String ARTICLE_PAGE_RELATED = "article_page_related";
+
 
     public static final String BASE_URL = "http://www.juzimi.com";
 
 
     public static final String BASE_IMG_URL = "http://www.wufazhuce.com";
+
+
+    public static final String MENU_DETAILS_URL = "http://www.juzimi.com/article/";
+
+
+
 
 
     // sp存储相关
@@ -110,6 +122,11 @@ public class Contracts {
         @GET("/allarticle/guwen")
         @Html
         Observable<JzmMenuBooksBean> getMenuGuShiInfo(@Query("page") int page);
+
+
+        @GET("/article/{acticleId}")
+        @Html
+        Observable<JzmMenuDetailBean> getMenuDetailInfo(@Path("acticleId") String acticleId, @Query("page") int page);
 
 
     }

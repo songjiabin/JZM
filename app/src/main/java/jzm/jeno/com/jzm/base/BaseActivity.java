@@ -41,6 +41,8 @@ public abstract class BaseActivity<P extends BasePresenter, V extends BaseView> 
         }
         initData();
         initView();
+        initViewListener();
+        process();
     }
 
 
@@ -51,6 +53,12 @@ public abstract class BaseActivity<P extends BasePresenter, V extends BaseView> 
 
 
     protected abstract void initView();
+
+    protected abstract void process();
+
+
+    protected abstract void initViewListener();
+
 
 
     public abstract P createPresenter();

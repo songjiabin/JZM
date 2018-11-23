@@ -64,6 +64,16 @@ public class MainActivity extends BaseActivity<MainContract.Presenter, MainContr
     }
 
     @Override
+    protected void process() {
+
+    }
+
+    @Override
+    protected void initViewListener() {
+
+    }
+
+    @Override
     public MainContract.Presenter createPresenter() {
         return new MainPresenter();
     }

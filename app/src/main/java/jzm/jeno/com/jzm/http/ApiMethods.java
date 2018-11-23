@@ -139,4 +139,15 @@ public class ApiMethods {
         ApiSubscribe(ApiStrategy.getApiService().getMenuGuShiInfo(page), observer);
     }
 
+
+    /**
+     * 分类 中 得到详情
+     *
+     * @param page
+     * @param observer
+     */
+    public static void getjzmMenuDetailInfo(String article, int page, Observer observer) {
+        ApiSubscribe(ApiStrategy.getApiService().getMenuDetailInfo(article, page), observer);
+    }
+
 }

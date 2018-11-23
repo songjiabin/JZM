@@ -37,6 +37,16 @@ public class ShowDialogueActivity extends BaseActivity {
     }
 
     @Override
+    protected void process() {
+
+    }
+
+    @Override
+    protected void initViewListener() {
+
+    }
+
+    @Override
     public BasePresenter createPresenter() {
         return null;
     }

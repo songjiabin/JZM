@@ -53,6 +53,8 @@ public class SearchPresenter extends SearchContract.Presenter {
             }
 
             getView().setSearchTags(tagsArray);
+        } else {
+            getView().setSearchTags(new String[]{});
         }
 
 
